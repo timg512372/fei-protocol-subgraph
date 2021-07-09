@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: FeiDao
@@ -20,7 +20,7 @@ dataSources:
         - VoteCast
       abis:
         - name: FeiDao
-          file: ./abis/FeiDao.json
+          file: FeiDao/abis/FeiDao.json
       eventHandlers:
         - event: ProposalCanceled(uint256)
           handler: handleProposalCanceled
@@ -32,7 +32,7 @@ dataSources:
           handler: handleProposalQueued
         - event: VoteCast(address,uint256,bool,uint256)
           handler: handleVoteCast
-      file: ./src/mapping2.ts
+      file: FeiDao/FeiDao.wasm
   - kind: ethereum/contract
     name: Tribe
     network: mainnet
@@ -51,7 +51,7 @@ dataSources:
         - Transfer
       abis:
         - name: Tribe
-          file: ./abis/Tribe.json
+          file: Tribe/abis/Tribe.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
@@ -63,4 +63,4 @@ dataSources:
           handler: handleMinterChanged
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/mapping2.ts
+      file: FeiDao/FeiDao.wasm
